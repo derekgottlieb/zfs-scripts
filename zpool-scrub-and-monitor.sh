@@ -2,7 +2,7 @@
 
 LOCK=/tmp/$(basename $0).lock
 
-if [[ ! -z $LOCK ]]; then
+if [[ ! -f $LOCK ]]; then
   echo "ERROR:$LOCK found"
   exit
 fi
