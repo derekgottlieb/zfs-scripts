@@ -28,7 +28,7 @@ if [ $OFFLINE_POOL -ne 0 ]; then
 fi
 
 # Verify we haven't run out of disk space...
-for percent_used in $(zpool list -H | awk '{ print $5 }')
+for percent_used in $(zpool list -H | awk -F'%' '{print $1}'| awk '{ print $NF }')
 do
   if [ "${percent_used%'%'}" -ge "75" ]; then
     if [ -z "$RANFROMCRON" ]; then
