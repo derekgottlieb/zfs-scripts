@@ -30,7 +30,7 @@ fi
 # Verify we haven't run out of disk space...
 for percent_used in $(zpool list -H | awk -F'%' '{print $1}'| awk '{ print $NF }')
 do
-  if [ "${percent_used%'%'}" -ge "75" ]; then
+  if [ "${percent_used}" -ge "75" ]; then
     if [ -z "$RANFROMCRON" ]; then
       echo "WARNING: ZFS filesystem filling up"
       zpool list
